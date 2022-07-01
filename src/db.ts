@@ -7,7 +7,7 @@ const {
   USERNAME: username,
   PASSWORD: password,
   DATABASE: db,
-} = await config()
+} = await config();
 
 export function connect(): Promise<Client> {
   return client.connect({

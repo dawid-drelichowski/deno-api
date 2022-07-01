@@ -1,9 +1,9 @@
 import { Application, Router } from './libraries.ts';
 import { connect } from './db.ts';
-import { config } from './config.ts'
+import { config } from './config.ts';
 
 const router = new Router();
-const port =  Number((await config()).PORT)
+const port = Number((await config()).PORT);
 
 router.get('/', async (context) => {
   const db = await connect();
