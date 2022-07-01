@@ -1,12 +1,19 @@
-import { Client, config } from './libraries.ts';
+import { Client } from './libraries.ts';
+import { config } from './config.ts';
 
-const db = new Client();
+const client = new Client();
+const {
+  HOSTNAME: hostname,
+  USERNAME: username,
+  PASSWORD: password,
+  DATABASE: db,
+} = await config()
 
 export function connect(): Promise<Client> {
-  return db.connect({
-    hostname: config.HOSTNAME,
-    username: config.USERNAME,
-    password: config.PASSWORD,
-    db: config.DATABASE,
+  return client.connect({
+    hostname,
+    username,
+    password,
+    db,
   });
 }

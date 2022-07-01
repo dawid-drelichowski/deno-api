@@ -1,7 +1,9 @@
-import { Application, config, Router } from './libraries.ts';
+import { Application, Router } from './libraries.ts';
 import { connect } from './db.ts';
+import { config } from './config.ts'
 
 const router = new Router();
+const port =  Number((await config()).PORT)
 
 router.get('/', async (context) => {
   const db = await connect();
@@ -26,4 +28,4 @@ const api = new Application();
 
 api.use(router.routes());
 api.use(router.allowedMethods());
-api.listen({ port: Number(config.PORT) });
+api.listen({ port });
