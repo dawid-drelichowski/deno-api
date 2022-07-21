@@ -1,4 +1,4 @@
-import { Application, Router } from './libraries.ts';
+import { Application, Router, cors } from './libraries.ts';
 import { connect } from './db.ts';
 import { config } from './config.ts';
 
@@ -26,6 +26,7 @@ router.get('/typeId/:id', async (context) => {
 
 const api = new Application();
 
+api.use(cors())
 api.use(router.routes());
 api.use(router.allowedMethods());
 api.listen({ port });
